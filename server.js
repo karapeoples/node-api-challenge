@@ -1,13 +1,13 @@
 const express = require('express')
-const cors = require('cors')
 const helmet = require('helmet')
+const morgan = require('morgan')
 const server = express()
 const actionRouter=require('./data/helpers/actions/actionRouter')
-const projectRouter = require('./data/helpers/projects/projectRouter')
+const projectRouter = require('./data/helpers/projects/projectsRouter')
 
-server.use(helmet(), morgan(dev), express.json(), cors())
-server.use('/api/users', actionRouter)
-server.use('/api/posts', projectRouter)
+server.use(helmet(), morgan('dev'), express.json())
+server.use('/actions', actionRouter)
+server.use('/projects', projectRouter)
 
 server.get('/', (req, res) => {
 	res.send(`<h2>Kara's API Sprint API!</h2>`)
