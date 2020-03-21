@@ -38,15 +38,25 @@ Commit your code regularly and use descriptive messages. This helps both you (in
 
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your Team Lead.
 
-- [ ] Mention two parts of Express that you learned about this week.
+- [x] Mention two parts of Express that you learned about this week.
+      There are so many to choose from but I believe the most important to me that I learned this week are:
 
-- [ ] Describe Middleware?
+1. It allows you to define route based on HTTP Methods/EndPoints
 
-- [ ] Describe a Resource?
+- These points are what make a REST API able to be made easily.
 
-- [ ] What can the API return to help clients know if a request was successful?
+2. The other is Middleware and capabilities therein
 
-- [ ] How can we partition our application into sub-applications?
+- Middleware allows you to do many things to make your application more sustainable and user-friendly.
+- [x] Describe Middleware?
+      Middleware are simply functions that provide help to your client or to provide information. It allows you to run your Endpoints or applications to run through several process to filter out errors or provide information to the development user.
+- [x] Describe a Resource?
+      Endpoints are your resources and resource is what allows building of RESTful API because these endpoints/resources provide a way to test HTTP methods
+- [x] What can the API return to help clients know if a request was successful?
+      Status Codes send res (the 2nd homie) responses with certain codes that mean success and you can provide a copy of the information that was added/edited/deleted...Status (200)success and
+      (201)create success are the only two I'm familiar with at this time.
+- [x] How can we partition our application into sub-applications?
+      Routers allow us to import and export different parts of our application. Routes are like Routes and Components mixed together from React.
 
 ## Minimum Viable Product
 
