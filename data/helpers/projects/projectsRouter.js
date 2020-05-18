@@ -19,10 +19,16 @@ router.get('/', (req, res) => {
 
 router.get('/:id', validProjectId, (req, res) => {
 	const {id} = req.params
-	Projects.get(id).then(project => {
-		res.status(200).json(project)
-	})
+	Projects.get(id)
+		.then((project) => {
+			res.status(200).json(project)
+		})
+		.catch((err) => {
+			res.status(500).json({ error: 'Sorry, try again!', err })
+		})
 })
+
+
 router.post('/', validProject, (req, res) => {
 	Projects.insert(req.body)
 		.then(project => {
@@ -52,12 +58,17 @@ router.delete('/:id', validProjectId, (req, res) => {
 					.remove(id)
 					.then(deleted => {
 						deleted
-							? res.status(200).json({ success: `Project ${id} was deleted!`, info: user }) : null
-						})
-				: null
-		})
+							? res.status(200).json({ success: `Project ${id} was deleted!`, info: project }) : null
+					})
+				:null
+				})
+		.catch(err => {
+						res.status(500).json({ error: 'Sorry, try again!', err })
+					})
 })
-router.get('/:id/actions', validProjectId, (req, res) => {
+				
+				
+router.get('/:id/actions', (req, res) => {
 	const { id } = req.params
 
 	Projects.getProjectActions(id)
@@ -65,7 +76,7 @@ router.get('/:id/actions', validProjectId, (req, res) => {
 			data ? res.status(200).json(data) : null
 		})
 })
-router.post('/:id/actions', validProjectId, validAction, (req, res) => {
+router.post('/:id/actions', validAction, (req, res) => {
 	const { description, notes } = req.body
 	const project_id = req.params.id
 
